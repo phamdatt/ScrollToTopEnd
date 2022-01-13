@@ -1,4 +1,4 @@
-import { View, FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, Animated, Dimensions } from 'react-native';
+import { View, FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, Animated, Dimensions, RefreshControl } from 'react-native';
 import React, { useState, useRef } from 'react';
 
 const ScrollToTopEnd = () => {
@@ -199,7 +199,10 @@ const ScrollToTopEnd = () => {
                 ref={(ref) => {
                     listRef = ref;
                 }}
+                stickyHeaderIndices={[0, 6, 10]}
+
                 data={dataSource}
+                refreshControl={<RefreshControl />}
                 ItemSeparatorComponent={ItemSeparatorComponent}
                 // onMomentumScrollEnd={ev => {
                 //     scrollToActiveIndex(Math.floor(ev.nativeEvent.contentOffset.y / Dimensions.get('window').height))
